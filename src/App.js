@@ -1,5 +1,6 @@
 import "./App.css";
 
+import React, { useState } from "react";
 import Form from "./form";
 import Experience from "./experience";
 
@@ -8,7 +9,13 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 function App() {
    const navigator = useNavigate();
 
+   const [data, setData] = useState();
+
    const takeData = (data) => {
+      setData(data);
+   };
+
+   const liftDataUp = (data) => {
       console.log(data);
    };
 
@@ -36,7 +43,8 @@ function App() {
                      prev={() => {
                         navigator("/");
                      }}
-                     takeData={takeData}
+                     data={data}
+                     liftData={liftDataUp}
                   />
                }
             />

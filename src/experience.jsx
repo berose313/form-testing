@@ -7,7 +7,7 @@ const Experience = (props) => {
 
    const [btnText, setBtnText] = useState("next");
 
-   let data = [];
+   let data = [props.data];
 
    const submitHandler = (event) => {
       event.preventDefault();
@@ -24,7 +24,7 @@ const Experience = (props) => {
          data.push(radio);
       }
       //   props.prev();
-      props.takeData(data);
+      props.liftData(data);
    };
 
    const btnChange = () => {
