@@ -5,13 +5,34 @@ const Experience = (props) => {
    const [player, setPlayer] = useState("");
    const [radio, setRadio] = useState("");
 
+   const [btnText, setBtnText] = useState("next");
+
    let data = [];
 
    const submitHandler = (event) => {
       event.preventDefault();
-      data.push({ level, player, radio });
+      if (level === "") {
+      } else {
+         data.push(level);
+      }
+      if (player === "") {
+      } else {
+         data.push(player);
+      }
+      if (radio === "") {
+      } else {
+         data.push(radio);
+      }
       //   props.prev();
-      console.log(data);
+      console.log(data.length);
+   };
+
+   const btnChange = () => {
+      if (data.length === 2) {
+         setBtnText("done");
+      } else {
+         setBtnText("next");
+      }
    };
 
    return (
@@ -23,6 +44,9 @@ const Experience = (props) => {
                placeholder="choose level"
                onChange={(event) => {
                   setLevel(event.target.value);
+               }}
+               onClick={() => {
+                  btnChange();
                }}
             >
                <option value="begginer">begginer</option>
@@ -37,6 +61,9 @@ const Experience = (props) => {
                onChange={(event) => {
                   setPlayer(event.target.value);
                }}
+               onClick={() => {
+                  btnChange();
+               }}
             >
                <option value="magnus">magnus</option>
                <option value="harom">harmon</option>
@@ -50,7 +77,9 @@ const Experience = (props) => {
                value="Yes"
                onChange={(e) => {
                   setRadio(e.target.value);
-                  console.log(radio);
+               }}
+               onClick={() => {
+                  btnChange();
                }}
             />
             <label htmlFor="no">no</label>
@@ -61,10 +90,12 @@ const Experience = (props) => {
                value="No"
                onChange={(e) => {
                   setRadio(e.target.value);
-                  console.log(radio);
+               }}
+               onClick={() => {
+                  btnChange();
                }}
             />
-            <button type="submit">Submit</button>
+            <button type="submit">{btnText}</button>
          </form>
       </div>
    );
