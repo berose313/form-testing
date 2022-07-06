@@ -19,7 +19,8 @@ const Form = (props) => {
          number,
          date,
       });
-      console.log(data);
+
+      props.takeData(data);
       props.next();
    };
 

@@ -8,6 +8,10 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 function App() {
    const navigator = useNavigate();
 
+   const takeData = (data) => {
+      console.log(data);
+   };
+
    return (
       <div className="App">
          <Routes>
@@ -21,6 +25,7 @@ function App() {
                      next={() => {
                         navigator("/b");
                      }}
+                     takeData={takeData}
                   />
                }
             />
@@ -31,6 +36,7 @@ function App() {
                      prev={() => {
                         navigator("/");
                      }}
+                     takeData={takeData}
                   />
                }
             />

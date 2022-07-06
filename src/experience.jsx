@@ -24,7 +24,7 @@ const Experience = (props) => {
          data.push(radio);
       }
       //   props.prev();
-      console.log(data.length);
+      props.takeData(data);
    };
 
    const btnChange = () => {
