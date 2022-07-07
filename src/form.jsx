@@ -4,10 +4,10 @@ import "./form.css";
 import Check from "./check";
 
 const Form = (props) => {
-   const [name, setName] = useState("");
-   const [email, setEmail] = useState("");
-   const [number, setNumber] = useState("");
-   const [date, setDate] = useState("");
+   const [name, setName] = useState(localStorage.getItem("name"));
+   const [email, setEmail] = useState(localStorage.getItem("email"));
+   const [number, setNumber] = useState(localStorage.getItem("number"));
+   const [date, setDate] = useState(localStorage.getItem("date"));
 
    let data = [];
 
@@ -20,6 +20,11 @@ const Form = (props) => {
          date,
       });
 
+      localStorage.setItem("name", name);
+      localStorage.setItem("email", email);
+      localStorage.setItem("number", number);
+      localStorage.setItem("date", date);
+
       props.takeData(data);
       props.next();
    };
@@ -29,7 +34,7 @@ const Form = (props) => {
          <input
             type="text"
             required
-            value={name}
+            value={localStorage.getItem("name")}
             name="name"
             onChange={(event) => {
                setName(event.target.value);
@@ -48,7 +53,7 @@ const Form = (props) => {
          <input
             type="email"
             required
-            value={email}
+            value={localStorage.getItem("email")}
             name="email"
             onChange={(event) => {
                setEmail(event.target.value);
@@ -67,7 +72,7 @@ const Form = (props) => {
          <input
             type="number"
             required
-            value={number}
+            value={localStorage.getItem("number")}
             name="number"
             onChange={(event) => {
                setNumber(event.target.value);
@@ -86,7 +91,7 @@ const Form = (props) => {
          <input
             type="date"
             required
-            value={date}
+            value={localStorage.getItem("date")}
             name="date"
             onChange={(event) => {
                setDate(event.target.value);

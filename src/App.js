@@ -43,6 +43,9 @@ function App() {
                      prev={() => {
                         navigator("/");
                      }}
+                     next={() => {
+                        navigator("/d");
+                     }}
                      data={data}
                      liftData={liftDataUp}
                   />

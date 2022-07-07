@@ -13,22 +13,26 @@ const Experience = (props) => {
       event.preventDefault();
       if (level === "") {
       } else {
+         localStorage.setItem("level", level);
          data.push(level);
       }
       if (player === "") {
       } else {
+         localStorage.setItem("player", player);
          data.push(player);
       }
       if (radio === "") {
       } else {
+         localStorage.setItem("radio", radio);
          data.push(radio);
       }
       //   props.prev();
       props.liftData(data);
+      // console.log("data length", data.length);
    };
 
    const btnChange = () => {
-      if (data.length === 2) {
+      if (data.length === 4) {
          setBtnText("done");
       } else {
          setBtnText("next");
@@ -48,6 +52,7 @@ const Experience = (props) => {
                onClick={() => {
                   btnChange();
                }}
+               value={localStorage.getItem("level")}
             >
                <option value="begginer">begginer</option>
                <option value="intermediate">intermediate</option>
@@ -58,6 +63,7 @@ const Experience = (props) => {
                name=""
                id=""
                placeholder="choose player"
+               value={localStorage.getItem("level")}
                onChange={(event) => {
                   setPlayer(event.target.value);
                }}
@@ -95,7 +101,10 @@ const Experience = (props) => {
                   btnChange();
                }}
             />
-            <button type="submit">{btnText}</button>
+            <div>
+               <button onClick={props.prev}>prev</button>
+               <button type="submit">{btnText}</button>
+            </div>
          </form>
       </div>
    );
